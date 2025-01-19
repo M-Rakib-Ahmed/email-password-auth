@@ -1,3 +1,5 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase.init";
 
 const Register = () => {
     const handleRegister = (even) =>{
@@ -6,7 +8,16 @@ const Register = () => {
         console.log(email);
         const password = even.target.password.value;
         console.log(password);
-        
+        // create user with email and  password
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result => {
+            console.log(result.user);
+            
+        })
+        .catch(error => {
+            console.log(error);
+            
+        })
 
     }
     return (
